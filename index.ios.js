@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { NativeModules } from 'react-native'
 
-const { VideoPlayerManager } = NativeModules
+const { RNVideoPlayer } = NativeModules
 
 module.exports = {
-  ...VideoPlayerManager,
+  ...RNVideoPlayer,
 
   showVideoPlayer(url) {
-    return VideoPlayerManager.showVideoPlayer(url)
+    return RNVideoPlayer.showVideoPlayer(url)
   },
 }
