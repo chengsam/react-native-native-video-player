@@ -35,4 +35,9 @@ RCT_EXPORT_METHOD(showVideoPlayer: (NSString*) url)
     _playerViewController.player.play;
 }
 
++ (BOOL)requiresMainQueueSetup
+{
+    return YES;
+}
+
 @end
