@@ -12,9 +12,6 @@
 #import <AVKit/AVKit.h>
 #import <AVFoundation/AVFoundation.h>
 
-@interface RNVideoPlayer : UIViewController <RCTBridgeModule>
-
-@property (strong, nonatomic) NSURL *videoURL;
-@property (nonatomic, strong) AVPlayerViewController *playerViewController;
+@interface RNVideoPlayer : NSObject <RCTBridgeModule>
 
 @end

@@ -10,29 +10,20 @@
 
 @implementation RNVideoPlayer
 
-@synthesize bridge = _bridge;
-
 RCT_EXPORT_MODULE();
 
-RCT_EXPORT_METHOD(showVideoPlayer: (NSString*) url)
+RCT_EXPORT_METHOD(showVideoPlayer:(NSString *)url)
 {
-    self.videoURL = [NSURL URLWithString:url];
+    NSURL *videoURL = [NSURL URLWithString:url];
+    AVPlayer *player = [AVPlayer playerWithURL:url];
+    AVPlayerViewController *playerViewController = [AVPlayerViewController new];
+    playerViewController.player = player;
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-
-    AVPlayer *player = [AVPlayer playerWithURL:self.videoURL];
-    self.playerViewController = [AVPlayerViewController new];
-    _playerViewController.player = player;
-    _playerViewController.showsPlaybackControls = YES;
-
-
     dispatch_async(dispatch_get_main_queue(), ^{
-
-        [delegate.window.rootViewController.view addSubview:self.playerViewController.view];
-        [delegate.window.rootViewController presentViewController:self.playerViewController animated:YES completion:nil];
-
+        [delegate.window.rootViewController presentViewController:self.playerViewController animated:YES completion:^{
+            [playerViewController.player play];
+        }];
     });
-
-    _playerViewController.player.play;
 }
 
 + (BOOL)requiresMainQueueSetup
