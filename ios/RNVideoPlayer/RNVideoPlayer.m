@@ -14,12 +14,12 @@ RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(showVideoPlayer:(NSString *)url)
 {
-    NSURL *videoURL = [NSURL URLWithString:url];
-    AVPlayer *player = [AVPlayer playerWithURL:videoURL];
-    AVPlayerViewController *playerViewController = [AVPlayerViewController new];
-    playerViewController.player = player;
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     dispatch_async(dispatch_get_main_queue(), ^{
+        NSURL *videoURL = [NSURL URLWithString:url];
+        AVPlayer *player = [AVPlayer playerWithURL:videoURL];
+        AVPlayerViewController *playerViewController = [AVPlayerViewController new];
+        playerViewController.player = player;
+        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         [delegate.window.rootViewController presentViewController:playerViewController animated:YES completion:^{
             [playerViewController.player play];
         }];
