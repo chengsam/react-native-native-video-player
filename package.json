@@ -26,9 +26,5 @@
   "peerDependencies": {
     "react-native": ">=0.44.0"
   },
-  "homepage": "https://github.com/BondGoat/react-native-native-video-player/blob/master/README.md",
-  "dependencies": {
-    "prop-types": "^15.6.0",
-    "react": "^16.0.0"
-  }
+  "homepage": "https://github.com/BondGoat/react-native-native-video-player/blob/master/README.md"
 }
